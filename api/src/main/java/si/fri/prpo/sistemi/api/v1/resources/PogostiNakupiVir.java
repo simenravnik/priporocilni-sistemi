@@ -1,12 +1,13 @@
 package si.fri.prpo.sistemi.api.v1.resources;
 
+import si.fri.prpo.sistemi.zrna.UpravljanjePriporocilnihSistemovZrno;
+
 import javax.enterprise.context.ApplicationScoped;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.inject.Inject;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 import java.util.logging.Logger;
 
 @ApplicationScoped
@@ -17,9 +18,21 @@ public class PogostiNakupiVir {
 
     private Logger log = Logger.getLogger(PogostiNakupiVir.class.getName());
 
+    @Inject
+    private UpravljanjePriporocilnihSistemovZrno upravljanjePriporocilnihSistemovZrno;
+
     @GET
     public Response pridobiPogosteArtikle() {
-        // Implement here
-        return Response.ok().build();
+
+        List<String> artikli = upravljanjePriporocilnihSistemovZrno.pridobiPogosteArtikle();
+        return Response.ok(artikli).build();
+    }
+
+    @POST
+    public Response vstaviArtikel(String imeArtikla) {
+
+        String artikel = upravljanjePriporocilnihSistemovZrno.vstaviArtikel(imeArtikla);
+
+        return Response.ok(artikel).build();
     }
 }
