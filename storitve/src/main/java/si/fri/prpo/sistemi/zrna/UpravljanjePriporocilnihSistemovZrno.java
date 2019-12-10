@@ -1,6 +1,7 @@
 package si.fri.prpo.sistemi.zrna;
 
 import si.fri.prpo.sistemi.baza.Artikel;
+import si.fri.prpo.sistemi.dto.ArtikelDto;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -57,13 +58,15 @@ public class UpravljanjePriporocilnihSistemovZrno {
 
     }
 
-    public String vstaviArtikel(String imeArtikla) {
+    public String vstaviArtikel(ArtikelDto artikelDto) {
+
+        String imeArtikla = artikelDto.getImeArtikla();
 
         boolean isInArtikelList = false;
 
         // poiscemo ce je v artikel list
         for (Artikel artikel : artikelList) {
-            if (artikel.getImeArtikla() == imeArtikla) {
+            if (artikel.getImeArtikla().equals(imeArtikla)) {
                 artikel.setValue(artikel.getValue() + 1); // povecamo value artikla za ena
                 isInArtikelList = true;
                 break;

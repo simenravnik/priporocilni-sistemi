@@ -1,5 +1,6 @@
 package si.fri.prpo.sistemi.api.v1.resources;
 
+import si.fri.prpo.sistemi.dto.ArtikelDto;
 import si.fri.prpo.sistemi.zrna.UpravljanjePriporocilnihSistemovZrno;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -29,9 +30,9 @@ public class PogostiNakupiVir {
     }
 
     @POST
-    public Response vstaviArtikel(String imeArtikla) {
+    public Response vstaviArtikel(ArtikelDto artikelDto) {
 
-        String artikel = upravljanjePriporocilnihSistemovZrno.vstaviArtikel(imeArtikla);
+        String artikel = upravljanjePriporocilnihSistemovZrno.vstaviArtikel(artikelDto);
 
         return Response.ok(artikel).build();
     }
