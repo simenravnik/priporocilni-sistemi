@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @ApplicationScoped
-@Path("uporabniki")
+@Path("pogostiArtikli")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class PogostiNakupiVir {
